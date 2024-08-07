@@ -1,5 +1,9 @@
+import UserList from "@/components/usersList";
+
 export default function Home() {
   return (
-    <h1>hola</h1>
+    <div>
+      <UserList />
+    </div>
   );
 }
