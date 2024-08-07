@@ -1,14 +1,15 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useUsers } from '../hooks/useUsers';
 
 const UserList: React.FC = () => {
-  const { users, loading } = useUsers();
+  const resultsPerPage = 30;
+  const [currentPage, setCurrentPage] = useState(1);
+  const { users, loading, error } = useUsers(currentPage, resultsPerPage);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="">
