@@ -16,6 +16,10 @@ type User = {
     medium: string;
     thumbnail: string;
   };
+  location: {
+    city: string;
+    country: string;
+  };
   nat: string;
 };
 
