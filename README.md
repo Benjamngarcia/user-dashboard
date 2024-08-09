@@ -1,7 +1,16 @@
-# Weather App ⛅
-Simple weather application developed with the objective of implementing basic Typescript knowledge.  
-In this project we will work with a search field to type the name of the city you want to visualize and also with a button that will request access to your location to show the weather of your current location.  
+# User Dashboard
+User Dashboard is a web application designed to manage and display user data interactively. It features a rich UI built with Next.js, allowing operations such as listing, filtering, and deleting users. The application consumes data from a mock API and demonstrates CRUD operations, pagination, and modern web design patterns.
+
 <img src="https://firebasestorage.googleapis.com/v0/b/portafolio-689ca.appspot.com/o/dashboard.jpg?alt=media&token=f0734e31-f3b2-4001-b9ff-26c57f10c10c" />
+
+## Features
+
+- List users with pagination.
+- Filter users by gender, nationality, and age.
+- Delete users interactively.
+- Responsive design using Tailwind CSS.
+- Export user data to CSV format.
+
 ## Start 🚀
 ```
 git clone https://github.com/Benjamngarcia/user-dashboard.git
