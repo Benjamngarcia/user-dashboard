@@ -22,7 +22,7 @@ describe("ConfirmationDelete", () => {
 
   it("should call onClose when the close button is clicked", () => {
     render(<ConfirmationDelete {...props} />);
-    fireEvent.click(screen.getByText("Close modal")); // Usando el texto alternativo del botón para simular clic
+    fireEvent.click(screen.getByText("Close modal"));
     expect(props.onClose).toHaveBeenCalled();
   });
 
