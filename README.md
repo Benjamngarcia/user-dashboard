@@ -16,7 +16,7 @@ User Dashboard is a web application designed to manage and display user data int
 git clone https://github.com/Benjamngarcia/user-dashboard.git
 cd/user-dashboard
 npm install
-
+```
 
 Run project:
 ```
