@@ -10,6 +10,13 @@ import {
   IconDownload,
 } from "@tabler/icons-react";
 
+const filterStatic = {
+  gender: "",
+  nationality: "",
+  ageMin: "",
+  ageMax: "",
+};
+
 const UserList: React.FC = () => {
   const [resultsPerPage, setResultsPerPage] = useState<number>(30);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -22,12 +29,7 @@ const UserList: React.FC = () => {
   const [nationalityFilter, setNationalityFilter] = useState("");
   const [ageMinFilter, setAgeMinFilter] = useState("");
   const [ageMaxFilter, setAgeMaxFilter] = useState("");
-  const [activeFilters, setActiveFilters] = useState({
-    gender: genderFilter,
-    nationality: nationalityFilter,
-    ageMin: ageMinFilter,
-    ageMax: ageMaxFilter,
-  });
+  const [activeFilters, setActiveFilters] = useState(filterStatic);
 
   const { users, loading, error } = useUsers(
     currentPage,
@@ -40,7 +42,7 @@ const UserList: React.FC = () => {
       gender: genderFilter,
       nationality: nationalityFilter,
       ageMin: ageMinFilter,
-      ageMax: ageMaxFilter
+      ageMax: ageMaxFilter,
     });
   };
 
@@ -49,12 +51,7 @@ const UserList: React.FC = () => {
     setNationalityFilter("");
     setAgeMinFilter("");
     setAgeMaxFilter("");
-    setActiveFilters({
-      gender: "",
-      nationality: "",
-      ageMin: "",
-      ageMax: ""
-    });
+    setActiveFilters(filterStatic);
   };
 
   useEffect(() => {
@@ -63,15 +60,11 @@ const UserList: React.FC = () => {
   }, [users]);
 
   useEffect(() => {
-    if (showFilters) {
-      setFilterClass(
-        "max-h-96 overflow-visible transition-all duration-500 ease-in-out"
-      );
-    } else {
-      setFilterClass(
-        "max-h-0 overflow-hidden transition-all duration-500 ease-out"
-      );
-    }
+    setFilterClass(
+      showFilters
+        ? "max-h-96 overflow-visible transition-all duration-500 ease-in-out"
+        : "max-h-0 overflow-hidden transition-all duration-500 ease-out"
+    );
   }, [showFilters]);
 
   if (loading) return <div>Loading...</div>;

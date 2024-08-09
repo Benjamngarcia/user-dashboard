@@ -58,7 +58,7 @@ const UserTable: React.FC<TableProps> = ({ users }) => {
                     className="h-8 w-8 rounded-full"
                     alt=""
                   />
-                  {user.name.first} {user.name.last} {user.dob.age}
+                  {user.name.first} {user.name.last}
                 </div>
               </td>
               <td className="px-3 py-3 border-b border-gray-200 text-xs">
