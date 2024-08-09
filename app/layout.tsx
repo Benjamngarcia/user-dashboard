@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { UserProvider } from "@/context/userContext";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} bg-gray-300`}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
-          {children}
-        </div>
+        <UserProvider>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
+            {children}
+          </div>
+        </UserProvider>
       </body>
     </html>
   );

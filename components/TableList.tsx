@@ -10,6 +10,7 @@ import {
   IconPlaystationCircle,
 } from "@tabler/icons-react";
 import Chip from "./Chip";
+import { useUser } from "@/context/userContext";
 
 interface TableProps {
   users: Users;
@@ -17,10 +18,12 @@ interface TableProps {
 }
 
 const UserTable: React.FC<TableProps> = ({ users, openModal }) => {
+  const { setUser } = useUser();
   const router = useRouter();
 
-  const handleLink = (uuid: string) => {
-    router.push(`/users/${uuid}`);
+  const handleSelectUser = (userData: User) => {
+    setUser(userData);
+    router.push(`/users/${userData.login.uuid}`);
   };
 
   return (
@@ -61,7 +64,7 @@ const UserTable: React.FC<TableProps> = ({ users, openModal }) => {
             <tr
               key={user.login.uuid}
               className="bg-white hover:bg-gray-100 duration-300 ease-in-out"
-              onClick={() => handleLink(user.login.uuid)}
+              onClick={() => handleSelectUser(user)}
             >
               <td className="px-3 py-3 border-b border-gray-200 text-xs">
                 <div className="flex items-center gap-2">

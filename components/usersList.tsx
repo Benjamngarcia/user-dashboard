@@ -37,8 +37,6 @@ const UserList: React.FC = () => {
     activeFilters
   );
 
-  console.log("users", users);
-
   const applyFilters = () => {
     setActiveFilters({
       gender: genderFilter,

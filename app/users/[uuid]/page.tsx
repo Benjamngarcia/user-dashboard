@@ -1,36 +1,20 @@
 "use client";
 
 import React from "react";
-import { useUserDetails } from "@/hooks/useUserDetails";
-import { useUsers } from "@/hooks/useUsers";
-import Loader from "@/components/Loader";
 import { useRouter } from "next/navigation";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
+import { useUser } from "@/context/userContext";
 
-export default function UserDetailsPage({
-  params,
-}: {
-  params: { uuid: string };
-}) {
+export default function UserDetailsPage() {
+  const { user } = useUser();
   const router = useRouter();
-  const { uuid } = params;
-
-  const { user, loading, error } = useUserDetails(uuid);
 
   const handleBackToDashboard = () => {
     router.push("/");
   };
 
-  if (loading || !user) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        <p>Error: {error.message}</p>
-      </div>
-    );
+  if (!user) {
+    return <div>No user data available.</div>;
   }
 
   return (
