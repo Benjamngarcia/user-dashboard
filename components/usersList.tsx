@@ -37,6 +37,8 @@ const UserList: React.FC = () => {
     activeFilters
   );
 
+  console.log("users", users);
+
   const applyFilters = () => {
     setActiveFilters({
       gender: genderFilter,
@@ -192,7 +194,7 @@ const UserList: React.FC = () => {
           </div>
         </div>
       )}
-      <UserTable users={users} openModal={handleOpenModal}/>
+      <UserTable users={users} openModal={handleOpenModal} />
       <TablePagination
         resultsPerPage={resultsPerPage}
         currentPage={currentPage}

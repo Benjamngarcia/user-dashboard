@@ -23,7 +23,7 @@ export const useUsers = (page: number, resultsPerPage: number, filters: Filters)
         if (filters.ageMin || filters.ageMax) {
           filteredUsers = filteredUsers.filter(user => {
             const age = user.dob.age;
-            const minAge = parseInt(filters.ageMin) || 0; 
+            const minAge = parseInt(filters.ageMin) || 0;
             const maxAge = parseInt(filters.ageMax) || Number.MAX_SAFE_INTEGER;
             return age >= minAge && age <= maxAge;
           });
