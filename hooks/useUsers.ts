@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchUsers } from '@/api/usersService';
+import { fetchUsers } from '../api/usersService';
 
 export const useUsers = (page: number, resultsPerPage: number, filters: Filters) => {
   const [users, setUsers] = useState<Users>([]);

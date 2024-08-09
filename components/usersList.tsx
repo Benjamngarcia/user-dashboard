@@ -5,7 +5,7 @@ import { useUsers } from "../hooks/useUsers";
 import UserTable from "./TableList";
 import { IconAdjustmentsHorizontal, IconDownload } from "@tabler/icons-react";
 import TablePagination from "./TablePagination";
-import { downloadCSV } from "@/helpers/exportCSV";
+import { downloadCSV } from "../helpers/exportCSV";
 import ConfirmationDelete from "./Modals/ConfirmationDelete";
 import Loader from "./Loader";
 

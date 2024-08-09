@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { UserProvider } from "@/context/userContext";
+import { UserProvider } from "../context/userContext";
 import "./globals.css";
 
 const montserrat = Montserrat({

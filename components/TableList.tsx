@@ -10,7 +10,7 @@ import {
   IconPlaystationCircle,
 } from "@tabler/icons-react";
 import Chip from "./Chip";
-import { useUser } from "@/context/userContext";
+import { useUser } from "../context/userContext";
 
 interface TableProps {
   users: Users;

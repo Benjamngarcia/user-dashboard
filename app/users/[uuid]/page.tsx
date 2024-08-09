@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
-import { useUser } from "@/context/userContext";
+import { useUser } from "../../../context/userContext";
 
 export default function UserDetailsPage() {
   const { user } = useUser();

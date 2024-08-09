@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent, screen } from "@testing-library/react";
-import ConfirmationDelete from "@/components/Modals/ConfirmationDelete";
+import ConfirmationDelete from "../components/Modals/ConfirmationDelete";
 
 describe("ConfirmationDelete", () => {
   const props = {
