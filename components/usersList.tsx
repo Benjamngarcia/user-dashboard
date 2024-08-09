@@ -7,6 +7,7 @@ import { IconAdjustmentsHorizontal, IconDownload } from "@tabler/icons-react";
 import TablePagination from "./TablePagination";
 import { downloadCSV } from "@/helpers/exportCSV";
 import ConfirmationDelete from "./Modals/ConfirmationDelete";
+import Loader from "./Loader";
 
 const filterStatic = {
   gender: "",
@@ -76,7 +77,7 @@ const UserList: React.FC = () => {
     );
   }, [showFilters]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
