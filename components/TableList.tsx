@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   IconTrash,
@@ -10,6 +9,7 @@ import {
   IconBlendMode,
   IconPlaystationCircle,
 } from "@tabler/icons-react";
+import Chip from "./Chip";
 
 interface TableProps {
   users: Users;
@@ -77,7 +77,7 @@ const UserTable: React.FC<TableProps> = ({ users, openModal }) => {
                 {user.email}
               </td>
               <td className="px-3 py-3 border-b border-gray-200 text-xs">
-                {user.gender}
+                <Chip label={user.gender} />
               </td>
               <td className="px-3 py-3 border-b border-gray-200 text-xs">
                 {user.location.city}, {user.location.country}
