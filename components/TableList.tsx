@@ -9,9 +9,10 @@ import {
 
 interface TableProps {
   users: Users;
+  openModal: (user: User) => void;
 }
 
-const UserTable: React.FC<TableProps> = ({ users }) => {
+const UserTable: React.FC<TableProps> = ({ users, openModal }) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full leading-normal">
@@ -73,6 +74,7 @@ const UserTable: React.FC<TableProps> = ({ users }) => {
               <td className="px-3 py-3 border-b border-gray-200 text-xs">
                 <button
                   type="button"
+                  onClick={() => openModal(user)}
                   className="flex items-center text-red-500 hover:text-white border border-red-500 duration-300 ease-in-out hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-2 py-1 text-center"
                 >
                   <IconTrash /> Delete

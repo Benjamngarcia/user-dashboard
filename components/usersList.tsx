@@ -6,6 +6,7 @@ import UserTable from "./TableList";
 import { IconAdjustmentsHorizontal, IconDownload } from "@tabler/icons-react";
 import TablePagination from "./TablePagination";
 import { downloadCSV } from "@/helpers/exportCSV";
+import ConfirmationDelete from "./Modals/ConfirmationDelete";
 
 const filterStatic = {
   gender: "",
@@ -17,7 +18,7 @@ const filterStatic = {
 const UserList: React.FC = () => {
   const [resultsPerPage, setResultsPerPage] = useState<number>(30);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [showFilters, setShowFilters] = useState<boolean>(true);
+  const [showFilters, setShowFilters] = useState<boolean>(false);
   const [nationalities, setNationalities] = useState<string[]>([]);
   const [filterClass, setFilterClass] = useState<string>(
     "max-h-0 overflow-hidden"
@@ -27,8 +28,9 @@ const UserList: React.FC = () => {
   const [ageMinFilter, setAgeMinFilter] = useState("");
   const [ageMaxFilter, setAgeMaxFilter] = useState("");
   const [activeFilters, setActiveFilters] = useState(filterStatic);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const { users, loading, error } = useUsers(
+  const { users, loading, error, deleteUser, setSelectedUser } = useUsers(
     currentPage,
     resultsPerPage,
     activeFilters
@@ -51,6 +53,16 @@ const UserList: React.FC = () => {
     setActiveFilters(filterStatic);
   };
 
+  const handleOpenModal = (user: User) => {
+    setSelectedUser(user);
+    setModalOpen(true);
+  };
+
+  const handleDeleteUser = () => {
+    deleteUser();
+    setModalOpen(false);
+  };
+
   useEffect(() => {
     const uniqueNationalities = new Set(users.map((user) => user.nat));
     setNationalities(Array.from(uniqueNationalities));
@@ -69,6 +81,12 @@ const UserList: React.FC = () => {
 
   return (
     <div>
+      <ConfirmationDelete
+        message="Are you sure you want to delete this user?"
+        onClose={() => setModalOpen(false)}
+        onConfirm={handleDeleteUser}
+        isOpen={modalOpen}
+      />
       <div className="flex justify-between gap-2 items-center px-3 py-2 bg-white border border-gray-300 sm:justify-end">
         <button
           type="button"
@@ -173,7 +191,7 @@ const UserList: React.FC = () => {
           </div>
         </div>
       )}
-      <UserTable users={users} />
+      <UserTable users={users} openModal={handleOpenModal}/>
       <TablePagination
         resultsPerPage={resultsPerPage}
         currentPage={currentPage}

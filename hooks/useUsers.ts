@@ -5,6 +5,12 @@ export const useUsers = (page: number, resultsPerPage: number, filters: Filters)
   const [users, setUsers] = useState<Users>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+
+  const deleteUser = () => {
+    setUsers(users.filter(user => user.login.uuid !== selectedUser?.login.uuid));
+    setSelectedUser(null);
+  };
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -33,5 +39,5 @@ export const useUsers = (page: number, resultsPerPage: number, filters: Filters)
     loadUsers();
   }, [page, resultsPerPage, JSON.stringify(filters)]);
 
-  return { users, loading, error };
+  return { users, loading, error, deleteUser, setSelectedUser };
 };
