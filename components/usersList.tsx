@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useUsers } from "../hooks/useUsers";
-import UserTable from "./usersTable";
+import UserTable from "./TableList";
 import { IconAdjustmentsHorizontal, IconDownload } from "@tabler/icons-react";
 import TablePagination from "./TablePagination";
 
