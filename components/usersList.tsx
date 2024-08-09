@@ -18,8 +18,44 @@ const UserList: React.FC = () => {
   const [filterClass, setFilterClass] = useState<string>(
     "max-h-0 overflow-hidden"
   );
+  const [genderFilter, setGenderFilter] = useState("");
+  const [nationalityFilter, setNationalityFilter] = useState("");
+  const [ageMinFilter, setAgeMinFilter] = useState("");
+  const [ageMaxFilter, setAgeMaxFilter] = useState("");
+  const [activeFilters, setActiveFilters] = useState({
+    gender: genderFilter,
+    nationality: nationalityFilter,
+    ageMin: ageMinFilter,
+    ageMax: ageMaxFilter,
+  });
 
-  const { users, loading, error } = useUsers(currentPage, resultsPerPage);
+  const { users, loading, error } = useUsers(
+    currentPage,
+    resultsPerPage,
+    activeFilters
+  );
+
+  const applyFilters = () => {
+    setActiveFilters({
+      gender: genderFilter,
+      nationality: nationalityFilter,
+      ageMin: ageMinFilter,
+      ageMax: ageMaxFilter
+    });
+  };
+
+  const resetFilters = () => {
+    setGenderFilter("");
+    setNationalityFilter("");
+    setAgeMinFilter("");
+    setAgeMaxFilter("");
+    setActiveFilters({
+      gender: "",
+      nationality: "",
+      ageMin: "",
+      ageMax: ""
+    });
+  };
 
   useEffect(() => {
     const uniqueNationalities = new Set(users.map((user) => user.nat));
@@ -73,6 +109,8 @@ const UserList: React.FC = () => {
               </label>
               <select
                 id="gender"
+                value={genderFilter}
+                onChange={(e) => setGenderFilter(e.target.value)}
                 className="px-2 py-1 text-xs sm:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 w-full"
               >
                 <option value="any">Any</option>
@@ -89,6 +127,8 @@ const UserList: React.FC = () => {
               </label>
               <select
                 id="nationality"
+                value={nationalityFilter}
+                onChange={(e) => setNationalityFilter(e.target.value)}
                 className="px-2 py-1 text-xs sm:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 w-full"
               >
                 <option value="any">Any</option>
@@ -111,15 +151,33 @@ const UserList: React.FC = () => {
                   type="number"
                   id="age-min"
                   placeholder="Min Age"
+                  value={ageMinFilter}
+                  onChange={(e) => setAgeMinFilter(e.target.value)}
                   className="px-2 py-1 text-xs sm:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 w-full"
                 />
                 <input
                   type="number"
                   id="age-max"
                   placeholder="Max Age"
+                  value={ageMaxFilter}
+                  onChange={(e) => setAgeMaxFilter(e.target.value)}
                   className="px-2 py-1 text-xs sm:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 w-full"
                 />
               </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-2 w-full md:flex-row">
+              <button
+                onClick={applyFilters}
+                className="flex justify-center font-medium rounded-lg text-xs sm:text-sm px-2 py-2 text-center text-gray-700 focus:text-white border border-gray-700 duration-300 ease-in-out focus:bg-gray-900 hover:bg-gray-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300"
+              >
+                Apply Filters
+              </button>
+              <button
+                onClick={resetFilters}
+                className="flex justify-center font-medium rounded-lg text-xs sm:text-sm px-2 py-2 text-center text-red-500 focus:text-white border border-red-500 duration-300 ease-in-out focus:bg-red-900 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300"
+              >
+                Reset Filters
+              </button>
             </div>
           </div>
         </div>

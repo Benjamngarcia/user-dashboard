@@ -7,17 +7,8 @@ import {
   IconPlaystationCircle,
 } from "@tabler/icons-react";
 
-interface User {
-  login: { uuid: string };
-  name: { first: string; last: string };
-  email: string;
-  gender: string;
-  location: { city: string; country: string };
-  picture: { thumbnail: string };
-}
-
 interface TableProps {
-  users: User[];
+  users: Users;
 }
 
 const UserTable: React.FC<TableProps> = ({ users }) => {
@@ -67,7 +58,7 @@ const UserTable: React.FC<TableProps> = ({ users }) => {
                     className="h-8 w-8 rounded-full"
                     alt=""
                   />
-                  {user.name.first} {user.name.last}
+                  {user.name.first} {user.name.last} {user.dob.age}
                 </div>
               </td>
               <td className="px-3 py-3 border-b border-gray-200 text-xs">

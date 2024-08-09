@@ -24,3 +24,10 @@ type User = {
 };
 
 type Users = User[];
+
+type Filters = {
+  gender: string;
+  nationality: string;
+  ageMin: string;
+  ageMax: string;
+};
