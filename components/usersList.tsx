@@ -5,6 +5,7 @@ import { useUsers } from "../hooks/useUsers";
 import UserTable from "./TableList";
 import { IconAdjustmentsHorizontal, IconDownload } from "@tabler/icons-react";
 import TablePagination from "./TablePagination";
+import { downloadCSV } from "@/helpers/exportCSV";
 
 const filterStatic = {
   gender: "",
@@ -78,6 +79,7 @@ const UserList: React.FC = () => {
         </button>
         <button
           type="button"
+          onClick={() => downloadCSV(users)}
           className="flex items-center text-green-500 hover:text-white border border-green-500 duration-300 ease-in-out hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs sm:text-sm px-2 py-1 text-center"
         >
           <IconDownload /> Export as CSV
