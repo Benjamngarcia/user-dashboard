@@ -6,7 +6,7 @@ interface ChipProps {
   label: string;
 }
 
-const Chip: React.FC<ChipProps> = ({ label }) => {
+const Chip: React.FC<ChipProps> = React.memo(({ label }) => {
   const color = label.toLowerCase() === 'male' ? 'border-blue-200' : 'border-pink-200';
   const formattedLabel = label.charAt(0).toUpperCase() + label.slice(1);
 
@@ -15,6 +15,6 @@ const Chip: React.FC<ChipProps> = ({ label }) => {
       {formattedLabel}
     </span>
   );
-};
+});
 
 export default Chip;

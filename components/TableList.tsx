@@ -11,6 +11,7 @@ import {
 } from "@tabler/icons-react";
 import Chip from "./Chip";
 import { useUser } from "../context/userContext";
+import Image from "next/image";
 
 interface TableProps {
   users: Users;
@@ -68,10 +69,12 @@ const UserTable: React.FC<TableProps> = ({ users, openModal }) => {
             >
               <td className="px-3 py-3 border-b border-gray-200 text-xs">
                 <div className="flex items-center gap-2">
-                  <img
+                  <Image
                     src={user.picture.thumbnail}
-                    className="h-8 w-8 rounded-full"
-                    alt=""
+                    alt={`${user.name.first} ${user.name.last}`}
+                    width={32}
+                    height={32}
+                    className="rounded-full"
                   />
                   {user.name.first} {user.name.last}
                 </div>
