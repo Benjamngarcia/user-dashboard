@@ -17,4 +17,6 @@ const Chip: React.FC<ChipProps> = React.memo(({ label }) => {
   );
 });
 
+Chip.displayName = 'Chip';
+
 export default Chip;
