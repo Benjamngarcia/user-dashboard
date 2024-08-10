@@ -4,7 +4,6 @@ const API_URL = 'https://randomuser.me/api/';
 const CACHE_DURATION = 60000;
 
 let cacheData: { [key: string]: { timestamp: number; data: Users } } = {};
-let cacheUser: { [key: string]: { timestamp: number; data: User } } = {};
 
 export const fetchUsers = async (page: number = 1, resultsPerPage: number = 3, filters: Filters): Promise<Users> => {
   const now = Date.now();
